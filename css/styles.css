@@ -38,6 +38,28 @@ header li {
   flex: 0 0 20%;
 }
 
+/* Hero */
+.hero-container {
+  background-color: #1abc9c;
+}
+.hero-container img {
+  padding-top: 25vh;
+  width: 50vw;
+  height: 60vh;
+}
+h1 {
+  color: white;
+  font-size: 45px;
+  font-weight: bolder;
+  margin: 5vh auto;
+}
+.hero-container p {
+  color: white;
+  font-size: medium;
+  margin: 10vh auto;
+}
+
+
 /* utilities */
 .container {
   padding: 1%;
@@ -48,7 +70,7 @@ header li {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: flex-start;
+  align-items: center;
 }
 .flex-container {
   display: flex;
