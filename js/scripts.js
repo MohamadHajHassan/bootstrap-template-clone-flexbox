@@ -50,6 +50,17 @@ window.onload = () => {
     return true;
   };
 
+  //  validate email
+  let checkEmail = () => {
+    if (!email.value.match(/.{3,}@.{5,}/)) {
+      probEmail =
+        "Please enter a valid email (Email should have a minimum of 3 characters before the @ and 5 characters after the @)";
+      return false;
+    } else {
+      return true;
+    }
+  };
+
   //
   window.onscroll = () => {
     scroll();
