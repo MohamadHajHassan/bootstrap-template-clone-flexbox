@@ -76,11 +76,43 @@ h2 {
   flex: 1 0 33.33%;
   padding: 10vh 1vh 0 1vh;
 }
+.portfolio-container :last-child {
+  margin-bottom: 5%;
+}
 .portfolio-container a img {
   border-radius: 6px;
 }
 .portfolio-container div {
   padding-left: 3%;
+}
+
+/* About */
+.about-container {
+  background-color: #1abc9c;
+  color: white;
+}
+.about-container div {
+  padding: 2vh 20vw;
+}
+.about-container h2 {
+  color: white;
+}
+.about-container p {
+  padding: 1%;
+  font-size: small;
+  line-height: 5vh;
+  flex: 1 0 50%;
+}
+.about-container a {
+  border: 2px solid white;
+  padding: 3vh;
+  border-radius: 6px;
+  color: white;
+  margin-bottom: 5%;
+}
+.about-container a:hover {
+  background-color: white;
+  color: black;
 }
 
 /* utilities */
