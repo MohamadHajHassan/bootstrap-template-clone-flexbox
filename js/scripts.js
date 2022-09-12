@@ -61,6 +61,17 @@ window.onload = () => {
     }
   };
 
+//  validate phone number
+  let checkNumber = () => {
+    if (!number.value.match(/\+9613[0-9]{7}/) && !number.value.match(/\+961[0-24-9]\d{7}/)) {
+      probNumber =
+        "Please enter a valid phone number (Number should start with +961 and followed by either 7 digits (if it's a 03 number, i.e: +9613456789) or. followed by 8 digits (if it's a 71/76/70/etc: +96171345234)";
+      return false;
+    } else {
+      return true;
+    }
+  };
+
   //
   window.onscroll = () => {
     scroll();
