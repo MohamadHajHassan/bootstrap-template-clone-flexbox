@@ -63,7 +63,11 @@ window.onload = () => {
 
   //  validate phone number
   let checkNumber = () => {
-    if (!number.value.match(/\+9613[0-9]{7}/) && !number.value.match(/\+961[0-24-9]\d{7}/)) {
+    if (
+      (!number.value.match(/\+9613\d{6}/) && !number.value.match(/\+961[0-24-9]\d{7}/)) ||
+      (number.value.length > 11 && number.value.match(/\+9613\d{6}/)) ||
+      (number.value.length > 12 && number.value.match(/\+961[0-24-9]\d{7}/))
+    ) {
       probNumber =
         "Please enter a valid phone number (Number should start with +961 and followed by either 7 digits (if it's a 03 number, i.e: +9613456789) or. followed by 8 digits (if it's a 71/76/70/etc: +96171345234)";
       return false;
@@ -82,10 +86,42 @@ window.onload = () => {
     }
   };
 
+  //  validate input
+  let validateInputs = () => {
+    if (checkName() && checkEmail() && checkNumber() && checkMessage()) {
+      validateText.innerText = "Your message has been sent successfully!";
+      validateSection.classList.remove("red-background");
+      validateSection.classList.add("green-background");
+    } else {
+      validateSection.classList.remove("green-background");
+      validateSection.classList.add("red-background");
+      if (!checkName()) {
+        validateText.innerText += probName;
+      }
+      if (!checkEmail()) {
+        validateText.innerText += `
+        ${probEmail}`;
+      }
+      if (!checkNumber()) {
+        validateText.innerText += `
+        ${probNumber}`;
+      }
+      if (!checkMessage()) {
+        validateText.innerText += `
+        ${probMessage}`;
+      }
+    }
+  };
+
   //
   window.onscroll = () => {
     scroll();
   };
   portfolioFirst.addEventListener("click", openPopup);
   closeWindow.addEventListener("click", closePopup);
+  contactSubmit.addEventListener("click", e => {
+    e.preventDefault();
+    validateText.innerText = "";
+  });
+  contactSubmit.addEventListener("click", validateInputs);
 };

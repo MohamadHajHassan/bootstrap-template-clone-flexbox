@@ -244,3 +244,20 @@ footer a:hover {
   align-items: baseline;
   flex-wrap: wrap;
 }
+
+.green-background {
+  background-color: green;
+  color: white;
+  text-align: center;
+  opacity: 0.9;
+  margin-bottom: 4px;
+}
+.red-background {
+  background-color: red;
+  color: white;
+  opacity: 0.9;
+  font-size: 12px;
+  text-align: center;
+  padding: 2%;
+  margin-bottom: 4px;
+}
