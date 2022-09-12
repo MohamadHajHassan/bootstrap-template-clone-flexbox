@@ -59,6 +59,29 @@ h1 {
   margin: 10vh auto;
 }
 
+/* Portfolio */
+.portfolio-container {
+  background-color: white;
+}
+h2 {
+  color: #2c3e50;
+  margin: 0 auto;
+  text-align: center;
+  font-weight: bold;
+  font-size: 35px;
+  padding-top: 10vh;
+}
+.portfolio-container a {
+  height: 50vh;
+  flex: 1 0 33.33%;
+  padding: 10vh 1vh 0 1vh;
+}
+.portfolio-container a img {
+  border-radius: 6px;
+}
+.portfolio-container div {
+  padding-left: 3%;
+}
 
 /* utilities */
 .container {
