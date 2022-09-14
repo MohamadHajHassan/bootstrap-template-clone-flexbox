@@ -1,4 +1,6 @@
 <?php
+
+header("Access-Control-Allow-origin:*");
 include("connection.php");
 
 $name = $_POST["name"];

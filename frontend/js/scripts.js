@@ -30,7 +30,10 @@ window.onload = () => {
 
   // make header smaller when scrolling dwown
   let scroll = () => {
-    if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+    if (
+      document.body.scrollTop > 50 ||
+      document.documentElement.scrollTop > 50
+    ) {
       linksHeader.forEach(l => {
         l.classList.add("small-header");
       });
@@ -44,7 +47,8 @@ window.onload = () => {
   //  validate name
   let checkName = () => {
     if (name.value.length < 5) {
-      probName = "Please enter your full name (Name should be at least 5 characters long)";
+      probName =
+        "Please enter your full name (Name should be at least 5 characters long)";
       return false;
     }
     return true;
@@ -64,7 +68,8 @@ window.onload = () => {
   //  validate phone number
   let checkNumber = () => {
     if (
-      (!number.value.match(/\+9613\d{6}/) && !number.value.match(/\+961[0-24-9]\d{7}/)) ||
+      (!number.value.match(/\+9613\d{6}/) &&
+        !number.value.match(/\+961[0-24-9]\d{7}/)) ||
       (number.value.length > 11 && number.value.match(/\+9613\d{6}/)) ||
       (number.value.length > 12 && number.value.match(/\+961[0-24-9]\d{7}/))
     ) {
@@ -86,12 +91,29 @@ window.onload = () => {
     }
   };
 
+  // fetch get_messages api
+  let sendMessage = () => {
+    fetch("http://localhost/bootstrap/submit_message.php", {
+      method: "POST",
+      body: new URLSearchParams(
+        { name: name },
+        { email: email },
+        { phone: number },
+        { text_message: message }
+      ),
+    })
+      .then(res => res.json())
+      .then(data => console.log(data))
+      .catch(error => console.log(error));
+  };
+
   //  validate input
   let validateInputs = () => {
     if (checkName() && checkEmail() && checkNumber() && checkMessage()) {
       validateText.innerText = "Your message has been sent successfully!";
       validateSection.classList.remove("red-background");
       validateSection.classList.add("green-background");
+      sendMessage();
     } else {
       validateSection.classList.remove("green-background");
       validateSection.classList.add("red-background");
