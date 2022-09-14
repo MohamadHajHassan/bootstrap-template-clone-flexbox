@@ -1,4 +1,5 @@
 <?php
+header("Access-Control-Allow-origin:*");
 include("connection.php");
 
 $query = $mysqli->prepare("SELECT text_message FROM messages");

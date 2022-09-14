@@ -15,6 +15,7 @@ window.onload = () => {
   let probEmail;
   let probNumber;
   let probMessage;
+  let display_messages = document.getElementById("display-messages");
 
   // Functions
 
@@ -91,22 +92,33 @@ window.onload = () => {
     }
   };
 
-  // fetch get_messages api
+  // fetch submit_message api
   let sendMessage = () => {
     fetch("http://localhost/bootstrap/submit_message.php", {
       method: "POST",
-      body: new URLSearchParams(
-        { name: name },
-        { email: email },
-        { phone: number },
-        { text_message: message }
-      ),
+      body: new URLSearchParams({
+        name: name.value,
+        email: email.value,
+        phone: number.value,
+        text_message: message.value,
+      }),
     })
       .then(res => res.json())
       .then(data => console.log(data))
       .catch(error => console.log(error));
   };
 
+  // fetch get_messages
+  let getMessages = () => {
+    fetch("http://localhost/bootstrap/get_messages.php")
+      .then(data => data.json())
+      .then(all_data =>
+        all_data.forEach(d => {
+          display_messages.innerHTML += `<p>${d.text_message}</p>`;
+        })
+      )
+      .catch(error => console.log(error));
+  };
   //  validate input
   let validateInputs = () => {
     if (checkName() && checkEmail() && checkNumber() && checkMessage()) {
@@ -139,6 +151,7 @@ window.onload = () => {
   window.onscroll = () => {
     scroll();
   };
+  getMessages();
   portfolioFirst.addEventListener("click", openPopup);
   closeWindow.addEventListener("click", closePopup);
   contactSubmit.addEventListener("click", e => {
